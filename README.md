@@ -1,5 +1,8 @@
-EmulationStation
+EmulationStationSpanish
 ================
+I only have the intention to translate the code  of RetroPie/emulationstation to Spanish language in this fork.
+
+Thanks to Jcarliman, Julenvitoria and bitstuffing.
 
 This is a fork of EmulationStation for RetroPie.
 EmulationStation is a cross-platform graphical front-end for emulators with controller navigation.
@@ -31,20 +34,20 @@ sudo dnf install SDL2-devel freeimage-devel freetype-devel curl-devel \
 **Note**: this repository uses a git submodule - to checkout the source and all submodules, use
 
 ```bash
-git clone --recursive https://github.com/RetroPie/EmulationStation.git
+git clone --recursive https://github.com/Kactius/EmulationStationSpanish.git
 ```
 
 or 
 
 ```bash
-git clone https://github.com/RetroPie/EmulationStation.git
+git clone https://github.com/Kactius/EmulationStationSpanish.git
 cd EmulationStation
 git submodule update --init
 ```
 
 Then, generate and build the Makefile with CMake:
 ```bash
-cd YourEmulationStationDirectory
+cd EmulationStationSpanish
 cmake .
 make
 ```

@@ -225,18 +225,18 @@ bool loadSystemConfigFile(Window* window, const char** errorString)
 	if(!SystemData::loadConfig(window))
 	{
 		LOG(LogError) << "Error while parsing systems configuration file!";
-		*errorString = "IT LOOKS LIKE YOUR SYSTEMS CONFIGURATION FILE HAS NOT BEEN SET UP OR IS INVALID. YOU'LL NEED TO DO THIS BY HAND, UNFORTUNATELY.\n\n"
-			"VISIT EMULATIONSTATION.ORG FOR MORE INFORMATION.";
+		*errorString = "PACECE SER QUE EL ARCHIVO DE CONFIGURACIÓN DE SISTEMAS NO FUE CONFIGURADO O ES INVÁLIDO. DESAFORTUNADAMENTE NECESITARÁ HACERLO DE NUEVO.\n\n"
+			"VISITE EMULATIONSTATION.ORG PARA OBTENER MÁS INFORMACIÓN.";
 		return false;
 	}
 
 	if(SystemData::sSystemVector.size() == 0)
 	{
 		LOG(LogError) << "No systems found! Does at least one system have a game present? (check that extensions match!)\n(Also, make sure you've updated your es_systems.cfg for XML!)";
-		*errorString = "WE CAN'T FIND ANY SYSTEMS!\n"
-			"CHECK THAT YOUR PATHS ARE CORRECT IN THE SYSTEMS CONFIGURATION FILE, "
-			"AND YOUR GAME DIRECTORY HAS AT LEAST ONE GAME WITH THE CORRECT EXTENSION.\n\n"
-			"VISIT EMULATIONSTATION.ORG FOR MORE INFORMATION.";
+		*errorString = "¡NO SE HA ENCONTRADO NINGÚN SISTEMA!\n"
+			"VERIFIQUE SI LA RUTA ES CORRECTA EN EL ARCHIVO DE CONFIGURACIÓN DE SISTEMAS, "
+			"Y SI EN SU DIRECTORIO DE JUEGOS TIENE AL MENOS UN JUEGO CON LA EXTENSIÓN CORRECTA.\n\n"
+			"VISITE EMULATIONSTATION.ORG PARA MÁS INFORMACIÓN.";
 		return false;
 	}
 
@@ -329,9 +329,9 @@ int main(int argc, char* argv[])
 
 		if (splashScreen)
 		{
-			std::string progressText = "Loading...";
+			std::string progressText = "Cargando...";
 			if (splashScreenProgress)
-				progressText = "Loading system config...";
+				progressText = "Cargando la configuración del sistema ...";
 			window.renderLoadingScreen(progressText);
 		}
 	}
@@ -372,7 +372,7 @@ int main(int argc, char* argv[])
 	ViewController::get()->preload();
 
 	if(splashScreen && splashScreenProgress)
-		window.renderLoadingScreen("Done.");
+		window.renderLoadingScreen("Realizado. A JUGAR.");
 
 	//choose which GUI to open depending on if an input configuration already exists
 	if(errorMsg == NULL)

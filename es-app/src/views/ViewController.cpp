@@ -65,7 +65,7 @@ void ViewController::goToStart()
 
 void ViewController::ReloadAndGoToStart()
 {
-	mWindow->renderLoadingScreen("Loading...");
+	mWindow->renderLoadingScreen("Cargando...");
 	ViewController::get()->reloadAll();
 	ViewController::get()->goToStart();
 }
@@ -448,7 +448,7 @@ void ViewController::preload()
 		if (splash)
 		{
 			i++;
-			mWindow->renderLoadingScreen("Preloading UI", (float)i / (float)max);
+			mWindow->renderLoadingScreen("Precargando Interfaz", (float)i / (float)max);
 		}
 
 		(*it)->getIndex()->resetFilters();

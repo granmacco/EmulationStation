@@ -26,10 +26,10 @@ CollectionSystemManager::CollectionSystemManager(Window* window) : mWindow(windo
 {
 	CollectionSystemDecl systemDecls[] = {
 		//type                  name            long name            //default sort              // theme folder            // isCustom
-		{ AUTO_ALL_GAMES,       "all",          "all games",         "filename, ascending",      "auto-allgames",           false },
-		{ AUTO_LAST_PLAYED,     "recent",       "last played",       "last played, descending",  "auto-lastplayed",         false },
-		{ AUTO_FAVORITES,       "favorites",    "favorites",         "filename, ascending",      "auto-favorites",          false },
-		{ CUSTOM_COLLECTION,    myCollectionsName,  "collections",    "filename, ascending",      "custom-collections",      true }
+		{ AUTO_ALL_GAMES,       "all",          "todos los juegos",         "filename, ascending",      "auto-allgames",           false },
+		{ AUTO_LAST_PLAYED,     "recent",       "Últimos jugados",       "last played, descending",  "auto-lastplayed",         false },
+		{ AUTO_FAVORITES,       "favorites",    "favoritos",         "filename, ascending",      "auto-favorites",          false },
+		{ CUSTOM_COLLECTION,    myCollectionsName,  "colecciones",    "filename, ascending",      "custom-collections",      true }
 	};
 
 	// create a map
@@ -55,7 +55,7 @@ CollectionSystemManager::CollectionSystemManager(Window* window) : mWindow(windo
 		Utils::FileSystem::createDirectory(path);
 
 	mIsEditingCustom = false;
-	mEditingCollection = "Favorites";
+	mEditingCollection = "Favoritos";
 	mEditingCollectionSystemData = NULL;
 	mCustomCollectionsBundle = NULL;
 }
@@ -440,16 +440,16 @@ void CollectionSystemManager::setEditMode(std::string collectionName)
 	// if it's bundled, this needs to be the bundle system
 	mEditingCollectionSystemData = sysData;
 
-	GuiInfoPopup* s = new GuiInfoPopup(mWindow, "Editing the '" + Utils::String::toUpper(collectionName) + "' Collection. Add/remove games with Y.", 10000);
+	GuiInfoPopup* s = new GuiInfoPopup(mWindow, "Editando la colección '" + Utils::String::toUpper(collectionName) + "' añadir/eliminar juegos con Y.", 10000);
 	mWindow->setInfoPopup(s);
 }
 
 void CollectionSystemManager::exitEditMode()
 {
-	GuiInfoPopup* s = new GuiInfoPopup(mWindow, "Finished editing the '" + mEditingCollection + "' Collection.", 4000);
+	GuiInfoPopup* s = new GuiInfoPopup(mWindow, "Finalizo la edición de la colección '" + mEditingCollection + "' .", 4000);
 	mWindow->setInfoPopup(s);
 	mIsEditingCustom = false;
-	mEditingCollection = "Favorites";
+	mEditingCollection = "Favoritos";
 
 	mEditingCollectionSystemData->system->onMetaDataSavePoint();
 }
@@ -532,11 +532,11 @@ bool CollectionSystemManager::toggleGameInCollection(FileData* file)
 		}
 		if (adding)
 		{
-			s = new GuiInfoPopup(mWindow, "Added '" + Utils::String::removeParenthesis(name) + "' to '" + Utils::String::toUpper(sysName) + "'", 4000);
+			s = new GuiInfoPopup(mWindow, "Añadido '" + Utils::String::removeParenthesis(name) + "' a '" + Utils::String::toUpper(sysName) + "'", 4000);
 		}
 		else
 		{
-			s = new GuiInfoPopup(mWindow, "Removed '" + Utils::String::removeParenthesis(name) + "' from '" + Utils::String::toUpper(sysName) + "'", 4000);
+			s = new GuiInfoPopup(mWindow, "Eliminado '" + Utils::String::removeParenthesis(name) + "' de '" + Utils::String::toUpper(sysName) + "'", 4000);
 		}
 		mWindow->setInfoPopup(s);
 		return true;
@@ -582,7 +582,7 @@ void CollectionSystemManager::updateCollectionFolderMetadata(SystemData* sys)
 {
 	FileData* rootFolder = sys->getRootFolder();
 
-	std::string desc = "This collection is empty.";
+	std::string desc = "Esta colección esta vacía.";
 	std::string rating = "0";
 	std::string players = "1";
 	std::string releasedate = "N/A";
@@ -624,12 +624,12 @@ void CollectionSystemManager::updateCollectionFolderMetadata(SystemData* sys)
 					games_list += "'" + file->getName() + "'";
 					break;
 				case 4:
-					games_list += " among other titles.";
+					games_list += " entre otros titulos.";
 			}
 		}
 
-		desc = "This collection contains " + std::to_string(games_counter) + " game"
-				+ (games_counter == 1 ? "" : "s") + ", including " + games_list;
+		desc = "Esta colección contiene " + std::to_string(games_counter) + " juego"
+				+ (games_counter == 1 ? "" : "s") + ", incluyendo " + games_list;
 
 		FileData* randomGame = sys->getRandomGame();
 

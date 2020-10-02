@@ -21,7 +21,7 @@ GuiDetectDevice::GuiDetectDevice(Window* window, bool firstRun, const std::funct
 	addChild(&mGrid);
 
 	// title
-	mTitle = std::make_shared<TextComponent>(mWindow, firstRun ? "WELCOME" : "CONFIGURE INPUT",
+	mTitle = std::make_shared<TextComponent>(mWindow, firstRun ? "BIENVENIDO" : "CONFIGURAR CONTROLES (MAPEADO)",
 		Font::get(FONT_SIZE_LARGE), 0x555555FF, ALIGN_CENTER);
 	mGrid.setEntry(mTitle, Vector2i(0, 0), false, true, Vector2i(1, 1), GridFlags::BORDER_BOTTOM);
 
@@ -30,17 +30,17 @@ GuiDetectDevice::GuiDetectDevice(Window* window, bool firstRun, const std::funct
 	int numDevices = InputManager::getInstance()->getNumJoysticks();
 
 	if(numDevices > 0)
-		deviceInfo << numDevices << " GAMEPAD" << (numDevices > 1 ? "S" : "") << " DETECTED";
+		deviceInfo << numDevices << " CONTROLADOR DE JUEGO" << (numDevices > 1 ? "S" : "") << " DETECTADO";
 	else
-		deviceInfo << "NO GAMEPADS DETECTED";
+		deviceInfo << "NO SE HAN DETECTADO CONTROLADORES DE JUEGOS";
 	mDeviceInfo = std::make_shared<TextComponent>(mWindow, deviceInfo.str(), Font::get(FONT_SIZE_SMALL), 0x999999FF, ALIGN_CENTER);
 	mGrid.setEntry(mDeviceInfo, Vector2i(0, 1), false, true);
 
 	// message
-	mMsg1 = std::make_shared<TextComponent>(mWindow, "HOLD A BUTTON ON YOUR DEVICE TO CONFIGURE IT.", Font::get(FONT_SIZE_SMALL), 0x777777FF, ALIGN_CENTER);
+	mMsg1 = std::make_shared<TextComponent>(mWindow, "MANTENGA PRESIONADO UN BOTÓN DEL DISPOSITIVO A CONFIGURAR.", Font::get(FONT_SIZE_SMALL), 0x777777FF, ALIGN_CENTER);
 	mGrid.setEntry(mMsg1, Vector2i(0, 2), false, true);
 
-	const char* msg2str = firstRun ? "PRESS F4 TO QUIT AT ANY TIME." : "PRESS ESC TO CANCEL.";
+	const char* msg2str = firstRun ? "PRESIONE F4 PARA CERRAR EMULATIONSTATION." : "PULSE ESC PARA CANCELAR.";
 	mMsg2 = std::make_shared<TextComponent>(mWindow, msg2str, Font::get(FONT_SIZE_SMALL), 0x777777FF, ALIGN_CENTER);
 	mGrid.setEntry(mMsg2, Vector2i(0, 3), false, true);
 
