@@ -65,7 +65,7 @@ void ViewController::goToStart()
 
 void ViewController::ReloadAndGoToStart()
 {
-	mWindow->renderLoadingScreen("Cargando...");
+	mWindow->renderLoadingScreen("CARGANDO ☠️ PLATA O ROMS ☠️ Prohibida su venta");
 	ViewController::get()->reloadAll();
 	ViewController::get()->goToStart();
 }

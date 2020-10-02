@@ -29,7 +29,6 @@ GuiMenu::GuiMenu(Window* window) : GuiComponent(window), mMenu(window, "MENÚ PR
 
 	if (isFullUI) {
 		addEntry("SCRAPER", 0x777777FF, true, [this] { openScraperSettings(); });
-		addEntry("SOUND SETTINGS", 0x777777FF, true, [this] { openSoundSettings(); });
 		addEntry("AJUSTES DE SONIDO", 0x777777FF, true, [this] { openSoundSettings(); });
 		addEntry("AJUSTES DE INTERFAZ", 0x777777FF, true, [this] { openUISettings(); });
 		addEntry("AJUSTES DE COLECCIONES", 0x777777FF, true, [this] { openCollectionSystemSettings(); });
@@ -575,7 +574,7 @@ void GuiMenu::addVersionInfo()
 
 	mVersion.setFont(Font::get(FONT_SIZE_SMALL));
 	mVersion.setColor(0x5E5E5EFF);
-	mVersion.setText("EMULATIONSTATION V" + Utils::String::toUpper(PROGRAM_VERSION_STRING) + buildDate);
+	mVersion.setText("☠EMULATIONSTATION V" + Utils::String::toUpper(PROGRAM_VERSION_STRING) + buildDate);
 	mVersion.setHorizontalAlignment(ALIGN_CENTER);
 	addChild(&mVersion);
 }

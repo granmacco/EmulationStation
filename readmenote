@@ -1,0 +1,4 @@
+es-app/src/views/ViewController.cpp
+es-app/src/main.cpp
+es-app/src/guis/GuiMenu.cpp
+es-core/src/platform.cpp video no
