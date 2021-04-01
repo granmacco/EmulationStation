@@ -43,9 +43,9 @@ int run_scraper_cmdline()
 
 	int filter_choice;
 	do {
-		out << "Select filter for games to be scraped:\n";
-		out << FILTER_MISSING_IMAGES << " - games missing images\n";
-		out << FILTER_ALL << " - all games period, can overwrite existing metadata\n";
+		out << "Seleccione un filtro para los juegos a scrapear:\n";
+		out << FILTER_MISSING_IMAGES << " - juegos sin carátula\n";
+		out << FILTER_ALL << " - todos los juegos, es posible que se sustituyan los datos anteriores\n";
 
 		std::cin >> filter_choice;
 		std::cin.ignore(1, '\n'); //skip the unconsumed newline
@@ -59,26 +59,26 @@ int run_scraper_cmdline()
 
 	std::vector<SystemData*> systems;
 
-	out << "You can scrape only specific platforms, or scrape all of them.\n";
-	out << "Would you like to scrape all platforms? (y/n)\n";
+	out << "Puedes scrapear plataformas específicas, o scrapear todas.\n";
+	out << "¿Quieres scrapear todas las plataformas? (s/n)\n";
 
 	std::string system_choice;
 	std::getline(std::cin, system_choice);
 
-	if(system_choice == "y" || system_choice == "Y")
+	if(system_choice == "y" || system_choice == "Y" || system_choice == "s" || system_choice == "S")
 	{
-		out << "Will scrape all platforms.\n";
+		out << "Se scrapearan todas las plataformas.\n";
 		for(auto i = SystemData::sSystemVector.cbegin(); i != SystemData::sSystemVector.cend(); i++)
 		{
-			out << "   " << (*i)->getName() << " (" << (*i)->getGameCount() << " games)\n";
+			out << "   " << (*i)->getName() << " (" << (*i)->getGameCount() << " juego" << ((*i)->getGameCount() > 1 ? "s" : "") << ")\n";
 			systems.push_back(*i);
 		}
 
 	}else{
 		std::string sys_name;
 
-		out << "Enter the names of the platforms you would like to scrape, one at a time.\n";
-		out << "Type nothing and press enter when you are ready to continue.\n";
+		out << "Introduce los nombres de las plataformas que quieres scrapear, una por línea.\n";
+		out << "No escribas nada y pulsa Intro cuando quieras continuar.\n";
 
 		do {
 			for(auto i = SystemData::sSystemVector.cbegin(); i != SystemData::sSystemVector.cend(); i++)
@@ -88,7 +88,7 @@ int run_scraper_cmdline()
 				else
 					out << "   ";
 
-				out << "\"" << (*i)->getName() << "\" (" << (*i)->getGameCount() << " games)\n";
+				out << "\"" << (*i)->getName() << "\" (" << (*i)->getGameCount() << " juego" << ((*i)->getGameCount() > 1 ? "s" : "") << ")\n";
 			}
 
 			std::getline(std::cin, sys_name);
@@ -108,7 +108,7 @@ int run_scraper_cmdline()
 			}
 
 			if(!found)
-				out << "System not found.\n";
+				out << "No se encontró el sistema.\n";
 
 		} while(true);
 	}
@@ -118,29 +118,29 @@ int run_scraper_cmdline()
 	//==================================================================================
 
 	out << "\n";
-	out << "You can let the scraper try to automatically choose the best result, or\n";
-	out << "you can manually approve each result. This \"manual mode\" is much more accurate.\n";
-	out << "It is highly recommended you use manual mode unless you have a very large collection.\n";
-	out << "Scrape in manual mode? (y/n)\n";
+	out << "Puedes dejar que el scraper intente seleccionar automáticamente el mejor resultado, o\n";
+	out << "puedes aprobar manualmente cada resultado. Este \"modo manual\" es mucho más preciso.\n";
+	out << "Se recomienda encarecidamente que uses el modo manual a no ser que tengas una colección inmensa.\n";
+	out << "¿Scrapear en modo manual? (s/n)\n";
 
 	std::string manual_mode_str;
 	std::getline(std::cin, manual_mode_str);
 
 	bool manual_mode = false;
 
-	if(manual_mode_str == "y" || manual_mode_str == "Y")
+	if(manual_mode_str == "y" || manual_mode_str == "Y" || manual_mode_str == "s" || manual_mode_str == "S")
 	{
 		manual_mode = true;
-		out << "Scraping in manual mode!\n";
+		out << "¡Scrapeando en modo manual!\n";
 	}else{
-		out << "Scraping in automatic mode!\n";
+		out << "¡Scrapeando en modo automático!\n";
 	}
 
 	//==================================================================================
 	//scraping
 	//==================================================================================
 	out << "\n";
-	out << "Alright, let's do this thing!\n";
+	out << "Venga, ¡al turrón!\n";
 	out << "=============================\n";
 
 	/*
@@ -284,7 +284,7 @@ int run_scraper_cmdline()
 	*/
 
 	out << "\n\n";
-	out << "ACTUALLY THIS IS STILL TODO\n";
+	out << "ES BROMA, ESTO ESTÁ AÚN EN DESARROLLO\n";
 
 	return 0;
 }

@@ -27,7 +27,7 @@ CollectionSystemManager::CollectionSystemManager(Window* window) : mWindow(windo
 	CollectionSystemDecl systemDecls[] = {
 		//type                  name            long name            //default sort              // theme folder            // isCustom
 		{ AUTO_ALL_GAMES,       "all",          "todos los juegos",         "filename, ascending",      "auto-allgames",           false },
-		{ AUTO_LAST_PLAYED,     "recent",       "Últimos jugados",       "last played, descending",  "auto-lastplayed",         false },
+		{ AUTO_LAST_PLAYED,     "recent",       "últimos jugados",       "last played, descending",  "auto-lastplayed",         false },
 		{ AUTO_FAVORITES,       "favorites",    "favoritos",         "filename, ascending",      "auto-favorites",          false },
 		{ CUSTOM_COLLECTION,    myCollectionsName,  "colecciones",    "filename, ascending",      "custom-collections",      true }
 	};
@@ -118,7 +118,7 @@ void CollectionSystemManager::saveCustomCollection(SystemData* sys)
 	}
 	else
 	{
-		LOG(LogError) << "Couldn't find collection to save! " << name;
+		LOG(LogError) << "No se ha encontrado una colección a salvar! " << name;
 	}
 }
 
@@ -386,12 +386,12 @@ std::string CollectionSystemManager::getValidNewCollectionName(std::string inNam
 
 	if(name == "")
 	{
-		name = "New Collection";
+		name = "Nueva Colección";
 	}
 
 	if(name != inName)
 	{
-		LOG(LogInfo) << "Had to change name, from: " << inName << " to: " << name;
+		LOG(LogInfo) << "Hubo que cambiar el nombre, de: " << inName << " a: " << name;
 	}
 
 	// get used systems in es_systems.cfg
@@ -426,7 +426,7 @@ void CollectionSystemManager::setEditMode(std::string collectionName)
 {
 	if (mCustomCollectionSystemsData.find(collectionName) == mCustomCollectionSystemsData.cend())
 	{
-		LOG(LogError) << "Tried to edit a non-existing collection: " << collectionName;
+		LOG(LogError) << "Se ha intentado editar una colección que no existe: " << collectionName;
 		return;
 	}
 	mIsEditingCustom = true;
@@ -446,7 +446,7 @@ void CollectionSystemManager::setEditMode(std::string collectionName)
 
 void CollectionSystemManager::exitEditMode()
 {
-	GuiInfoPopup* s = new GuiInfoPopup(mWindow, "Finalizo la edición de la colección '" + mEditingCollection + "' .", 4000);
+	GuiInfoPopup* s = new GuiInfoPopup(mWindow, "Finalizó la edición de la colección '" + mEditingCollection + "' .", 4000);
 	mWindow->setInfoPopup(s);
 	mIsEditingCustom = false;
 	mEditingCollection = "Favoritos";
@@ -586,8 +586,8 @@ void CollectionSystemManager::updateCollectionFolderMetadata(SystemData* sys)
 	std::string rating = "0";
 	std::string players = "1";
 	std::string releasedate = "N/A";
-	std::string developer = "None";
-	std::string genre = "None";
+	std::string developer = "Ninguno";
+	std::string genre = "Ninguno";
 	std::string video = "";
 	std::string thumbnail = "";
 	std::string image = "";
@@ -612,8 +612,8 @@ void CollectionSystemManager::updateCollectionFolderMetadata(SystemData* sys)
 			rating = (new_rating > rating ? (new_rating != "" ? new_rating : rating) : rating);
 			players = (new_players > players ? (new_players != "" ? new_players : players) : players);
 			releasedate = (new_releasedate < releasedate ? (new_releasedate != "" ? new_releasedate : releasedate) : releasedate);
-			developer = (developer == "None" ? new_developer : (new_developer != developer ? "Various" : new_developer));
-			genre = (genre == "None" ? new_genre : (new_genre != genre ? "Various" : new_genre));
+			developer = (developer == "Ninguno" ? new_developer : (new_developer != developer ? "Varios" : new_developer));
+			genre = (genre == "Ninguno" ? new_genre : (new_genre != genre ? "Varios" : new_genre));
 
 			switch(games_counter)
 			{
@@ -624,7 +624,7 @@ void CollectionSystemManager::updateCollectionFolderMetadata(SystemData* sys)
 					games_list += "'" + file->getName() + "'";
 					break;
 				case 4:
-					games_list += " entre otros titulos.";
+					games_list += " entre otros títulos.";
 			}
 		}
 
@@ -754,10 +754,10 @@ void CollectionSystemManager::populateCustomCollection(CollectionSystemData* sys
 
 	if(!Utils::FileSystem::exists(path))
 	{
-		LOG(LogInfo) << "Couldn't find custom collection config file at " << path;
+		LOG(LogInfo) << "No se pudo encontrar el fichero de configuración de la colección personalizada en " << path;
 		return;
 	}
-	LOG(LogInfo) << "Loading custom collection config file at " << path;
+	LOG(LogInfo) << "Cargando fichero de configuración de colección personalizada en " << path;
 
 	FileData* rootFolder = newSys->getRootFolder();
 	FileFilterIndex* index = newSys->getIndex();
@@ -780,7 +780,7 @@ void CollectionSystemManager::populateCustomCollection(CollectionSystemData* sys
 		}
 		else
 		{
-			LOG(LogInfo) << "Couldn't find game referenced at '" << gameKey << "' for system config '" << path << "'";
+			LOG(LogInfo) << "No se pudo encontrar el juego referenciado en '" << gameKey << "' para la configuración del sistema '" << path << "'";
 		}
 	}
 	rootFolder->sort(getSortTypeFromString(sysDecl.defaultSort));
@@ -991,7 +991,7 @@ std::vector<std::string> CollectionSystemManager::getCollectionsFromConfigFolder
 				}
 				else
 				{
-					LOG(LogInfo) << "Found non-collection config file in collections folder: " << filename;
+					LOG(LogInfo) << "Se ha encontrado un fichero de configuración que no es de colección en la carpeta de colecciones: " << filename;
 				}
 			}
 		}

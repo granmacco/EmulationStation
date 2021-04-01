@@ -121,7 +121,7 @@ void SystemView::populate()
 		if (!UIModeController::getInstance()->isUIModeFull())
 		{
 			Settings::getInstance()->setString("UIMode", "Full");
-			mWindow->pushGui(new GuiMsgBox(mWindow, "La interfaz seleccionada no tiene nada que mostrar,\n regresando al modo de interface: COMPLETO", "OK", nullptr));
+			mWindow->pushGui(new GuiMsgBox(mWindow, "La interfaz seleccionada no tiene nada que mostrar,\n regresando al modo de interfaz: COMPLETO", "OK", nullptr));
 		}
 	}
 }
@@ -258,7 +258,7 @@ void SystemView::onCursorChanged(const CursorState& /*state*/)
 		if (!getSelected()->isGameSystem())
 			ss << "CONFIGURACIÓN";
 		else
-			ss << gameCount << " JUEGO" << (gameCount == 1 ? "" : "S") << " DISPONIBLES";
+			ss << gameCount << " JUEGO" << (gameCount == 1 ? "" : "S") << " DISPONIBLE" << (gameCount == 1 ? "" : "S");
 
 		mSystemInfo.setText(ss.str());
 	}, false, 1);

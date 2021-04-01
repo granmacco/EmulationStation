@@ -17,7 +17,7 @@ GuiScraperStart::GuiScraperStart(Window* window) : GuiComponent(window),
 	mFilters = std::make_shared< OptionListComponent<GameFilterFunc> >(mWindow, "SCRAPEAR ESTOS JUEGOS", false);
 	mFilters->add("Todos los juegos",
 		[](SystemData*, FileData*) -> bool { return true; }, false);
-	mFilters->add("Solo imagenes faltantes",
+	mFilters->add("Sólo juegos sin carátula",
 		[](SystemData*, FileData* g) -> bool { return g->metadata.get("image").empty(); }, true);
 	mMenu.addWithLabel("Filtrar", mFilters);
 
@@ -48,7 +48,7 @@ void GuiScraperStart::pressedStart()
 		if((*it)->getPlatformIds().empty())
 		{
 			mWindow->pushGui(new GuiMsgBox(mWindow,
-				Utils::String::toUpper("Advertencia: algunos de sus sistemas selecionados no tienen una plataforma seleccionada. ¡Los resultados pueden ser inexactos de lo habitual!\n¿CONTINUAR DE TODOS MODOS?"),
+				Utils::String::toUpper("Advertencia: algunos de los sistemas seleccionados no tienen una plataforma seleccionada. ¡Los resultados pueden ser más inexactos de lo habitual!\n¿CONTINUAR DE TODOS MODOS?"),
 				"SÍ", std::bind(&GuiScraperStart::start, this),
 				"NO", nullptr));
 			return;

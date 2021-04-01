@@ -52,13 +52,13 @@ GridGameListView::GridGameListView(Window* window, FileData* root) :
 	mLblReleaseDate.setText("Publicado: ");
 	addChild(&mLblReleaseDate);
 	addChild(&mReleaseDate);
-	mLblDeveloper.setText("Desarrolladora: ");
+	mLblDeveloper.setText("Desarrollador: ");
 	addChild(&mLblDeveloper);
 	addChild(&mDeveloper);
-	mLblPublisher.setText("Distribuidora: ");
+	mLblPublisher.setText("Distribuidor: ");
 	addChild(&mLblPublisher);
 	addChild(&mPublisher);
-	mLblGenre.setText("Genero: ");
+	mLblGenre.setText("Género: ");
 	addChild(&mLblGenre);
 	addChild(&mGenre);
 	mLblPlayers.setText("Jugadores: ");

@@ -9,7 +9,7 @@
 #include "CollectionSystemManager.h"
 #include "Window.h"
 
-GuiCollectionSystemsOptions::GuiCollectionSystemsOptions(Window* window) : GuiComponent(window), mMenu(window, "CONFIGURAR COLECCIÓNES")
+GuiCollectionSystemsOptions::GuiCollectionSystemsOptions(Window* window) : GuiComponent(window), mMenu(window, "CONFIGURAR COLECCIONES")
 {
 	initializeMenu();
 }
@@ -82,7 +82,7 @@ void GuiCollectionSystemsOptions::initializeMenu()
 	if(CollectionSystemManager::get()->isEditing())
 	{
 		row.elements.clear();
-		row.addElement(std::make_shared<TextComponent>(mWindow, "FINALIZAR LA EDICIÓN DE LA COLECCIÓN '" + Utils::String::toUpper(CollectionSystemManager::get()->getEditingCollection()) + "' COLLECTION", Font::get(FONT_SIZE_MEDIUM), 0x777777FF), true);
+		row.addElement(std::make_shared<TextComponent>(mWindow, "FINALIZAR LA EDICIÓN DE LA COLECCIÓN '" + Utils::String::toUpper(CollectionSystemManager::get()->getEditingCollection()) + "'", Font::get(FONT_SIZE_MEDIUM), 0x777777FF), true);
 		row.makeAcceptInputHandler(std::bind(&GuiCollectionSystemsOptions::exitEditMode, this));
 		mMenu.addRow(row);
 	}

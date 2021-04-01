@@ -14,7 +14,7 @@ GuiSlideshowScreensaverOptions::GuiSlideshowScreensaverOptions(Window* window, c
 	// image duration (seconds)
 	auto sss_image_sec = std::make_shared<SliderComponent>(mWindow, 1.f, 60.f, 1.f, "s");
 	sss_image_sec->setValue((float)(Settings::getInstance()->getInt("ScreenSaverSwapImageTimeout") / (1000)));
-	addWithLabel(row, "CAMBIAR IMAGEN DESPUÉS DE (SECS)", sss_image_sec);
+	addWithLabel(row, "CAMBIAR IMAGEN DESPUÉS DE (SEGS)", sss_image_sec);
 	addSaveFunc([sss_image_sec] {
 		int playNextTimeout = (int)Math::round(sss_image_sec->getValue()) * (1000);
 		Settings::getInstance()->setInt("ScreenSaverSwapImageTimeout", playNextTimeout);

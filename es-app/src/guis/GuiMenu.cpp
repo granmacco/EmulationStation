@@ -389,7 +389,7 @@ void GuiMenu::openUISettings()
 	// hide start menu in Kid Mode
 	auto disable_start = std::make_shared<SwitchComponent>(mWindow);
 	disable_start->setState(Settings::getInstance()->getBool("DisableKidStartMenu"));
-	s->addWithLabel("DESACTIVAR MENU DE START EN MODO NIÑOS (KID MODE)", disable_start);
+	s->addWithLabel("DESACTIVAR MENÚ DE START EN MODO NIÑOS (KID MODE)", disable_start);
 	s->addSaveFunc([disable_start] { Settings::getInstance()->setBool("DisableKidStartMenu", disable_start->getState()); });
 
 	mWindow->pushGui(s);
@@ -479,7 +479,7 @@ void GuiMenu::openOtherSettings()
 	// hidden files
 	auto background_indexing = std::make_shared<SwitchComponent>(mWindow);
 	background_indexing->setState(Settings::getInstance()->getBool("BackgroundIndexing"));
-	s->addWithLabel("INDEX FILES DURING SCREENSAVER", background_indexing);
+	s->addWithLabel("INDEXAR FICHEROS DURANTE EL SALVAPANTALLAS", background_indexing);
 	s->addSaveFunc([background_indexing] { Settings::getInstance()->setBool("BackgroundIndexing", background_indexing->getState()); });
 
 	// framerate
@@ -518,7 +518,7 @@ void GuiMenu::openQuitMenu()
 				[] {
 				Scripting::fireEvent("quit");
 				if(quitES(QuitMode::RESTART) != 0)
-					LOG(LogWarning) << "Restart terminated with non-zero result!";
+					LOG(LogWarning) << "Reinicio finalizado con resultado distinto de cero!";
 			}, "NO", nullptr));
 		});
 		row.addElement(std::make_shared<TextComponent>(window, "REINICIAR EMULATIONSTATION", Font::get(FONT_SIZE_MEDIUM), 0x777777FF), true);
@@ -547,7 +547,7 @@ void GuiMenu::openQuitMenu()
 			Scripting::fireEvent("quit", "reboot");
 			Scripting::fireEvent("reboot");
 			if (quitES(QuitMode::REBOOT) != 0)
-				LOG(LogWarning) << "Restart terminated with non-zero result!";
+				LOG(LogWarning) << "Reinicio finalizado con resultado distinto de cero!";
 		}, "NO", nullptr));
 	});
 	row.addElement(std::make_shared<TextComponent>(window, "REINICIAR EL SISTEMA", Font::get(FONT_SIZE_MEDIUM), 0x777777FF), true);
@@ -560,7 +560,7 @@ void GuiMenu::openQuitMenu()
 			Scripting::fireEvent("quit", "shutdown");
 			Scripting::fireEvent("shutdown");
 			if (quitES(QuitMode::SHUTDOWN) != 0)
-				LOG(LogWarning) << "Shutdown terminated with non-zero result!";
+				LOG(LogWarning) << "Cierre finalizado con resultado distinto de cero!";
 		}, "NO", nullptr));
 	});
 	row.addElement(std::make_shared<TextComponent>(window, "APAGAR EL SISTEMA", Font::get(FONT_SIZE_MEDIUM), 0x777777FF), true);

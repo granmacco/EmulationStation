@@ -23,7 +23,7 @@ static const InputConfigStructure GUI_INPUT_CONFIG_LIST[inputCount] =
 	{ "Left",             false, "CRUCETA IZQUIERDA",         ":/help/dpad_left.svg" },
 	{ "Right",            false, "CRUCETA DERECHA",        ":/help/dpad_right.svg" },
 	{ "Start",            true,  "START",              ":/help/button_start.svg" },
-	{ "Select",           true,  "SELECT creditos",             ":/help/button_select.svg" },
+	{ "Select",           true,  "SELECT créditos",             ":/help/button_select.svg" },
 	{ "A",                false, "BOTÓN A / ESTE",    ":/help/buttons_east.svg" },
 	{ "B",                true,  "BOTÓN B / SUR",   ":/help/buttons_south.svg" },
 	{ "X",                true,  "BOTÓN X / NORTE",   ":/help/buttons_north.svg" },
@@ -41,7 +41,7 @@ static const InputConfigStructure GUI_INPUT_CONFIG_LIST[inputCount] =
 	{ "RightAnalogUp",    true,  "↑ANALÓGICO DCH ARRIBA",    ":/help/analog_up.svg" },
 	{ "RightAnalogDown",  true,  "↓ANALÓGICO DCH ABAJO",  ":/help/analog_down.svg" },
 	{ "RightAnalogLeft",  true,  "←ANALÓGICO DCH IZQUIERDA",  ":/help/analog_left.svg" },
-	{ "RightAnalogRight", true,  "→ANALÓGICO DCH DERECHAT", ":/help/analog_right.svg" },
+	{ "RightAnalogRight", true,  "→ANALÓGICO DCH DERECHA", ":/help/analog_right.svg" },
 	{ "HotKeyEnable",     true,  "ACCESO DIRECTO (HOTKEY)",      ":/help/button_hotkey.svg" }
 };
 
@@ -81,7 +81,7 @@ GuiInputConfig::GuiInputConfig(Window* window, InputConfig* target, bool reconfi
 	mSubtitle1 = std::make_shared<TextComponent>(mWindow, Utils::String::toUpper(ss.str()), Font::get(FONT_SIZE_MEDIUM), 0x555555FF, ALIGN_CENTER);
 	mGrid.setEntry(mSubtitle1, Vector2i(0, 2), false, true);
 
-	mSubtitle2 = std::make_shared<TextComponent>(mWindow, "MANTENGA PRESIONADO UN BOTÓN PARA SALTAR", Font::get(FONT_SIZE_SMALL), 0x999999FF, ALIGN_CENTER);
+	mSubtitle2 = std::make_shared<TextComponent>(mWindow, "MANTENGA PRESIONADO UN BOTÓN PARA OMITIR", Font::get(FONT_SIZE_SMALL), 0x999999FF, ALIGN_CENTER);
 	mSubtitle2->setOpacity(GUI_INPUT_CONFIG_LIST[0].skippable * 255);
 	mGrid.setEntry(mSubtitle2, Vector2i(0, 3), false, true);
 
@@ -108,7 +108,7 @@ GuiInputConfig::GuiInputConfig(Window* window, InputConfig* target, bool reconfi
 		auto text = std::make_shared<TextComponent>(mWindow, GUI_INPUT_CONFIG_LIST[i].dispName, Font::get(FONT_SIZE_MEDIUM), 0x777777FF);
 		row.addElement(text, true);
 
-		auto mapping = std::make_shared<TextComponent>(mWindow, "-NO DEFINIDO-", Font::get(FONT_SIZE_MEDIUM, FONT_PATH_LIGHT), 0x999999FF, ALIGN_RIGHT);
+		auto mapping = std::make_shared<TextComponent>(mWindow, "-OMITIDO-", Font::get(FONT_SIZE_MEDIUM, FONT_PATH_LIGHT), 0x999999FF, ALIGN_RIGHT);
 		setNotDefined(mapping); // overrides text and color set above
 		row.addElement(mapping, true);
 		mMappings.push_back(mapping);
@@ -193,7 +193,7 @@ GuiInputConfig::GuiInputConfig(Window* window, InputConfig* target, bool reconfi
 		Input input;
 		if (!mTargetConfig->getInputByName("HotKeyEnable", &input)) {
 			mWindow->pushGui(new GuiMsgBox(mWindow,
-				"NO HA SELECCIONADO NINGUN BOTÓN DE ACCESO DIRECTO (HOTKEY). ESTO NECESARIO PARA SALIR DE LOS JUEGOS. ¿DESEA USAR EL BOTÓN SELECT POR DEFECTO? RESPONDA SÍ PARA USAR SELECT O NO PARA ASIGNAR ALGÚN BOTÓN DE ACTIVACIÓN DE HOTKEY DIFERENTE A SELECT.",
+				"NO HA SELECCIONADO NINGUN BOTÓN DE ACCESO DIRECTO (HOTKEY). ES NECESARIO PARA SALIR DE LOS JUEGOS. ¿DESEA USAR EL BOTÓN SELECT POR DEFECTO? RESPONDA SÍ PARA USAR SELECT O NO PARA ASIGNAR ALGÚN BOTÓN DE ACTIVACIÓN DE HOTKEY DIFERENTE A SELECT.",
 				"SÍ", [this, okFunction] {
 					Input input;
 					mTargetConfig->getInputByName("Select", &input);
@@ -256,7 +256,7 @@ void GuiInputConfig::update(int deltaTime)
 				// crossed the second boundary, update text
 				const auto& text = mMappings.at(mHeldInputId);
 				std::stringstream ss;
-				ss << "PRESIONE DURANTE " << HOLD_TO_SKIP_MS/1000 - curSec << "S PARA SALTAR";
+				ss << "PRESIONE DURANTE " << HOLD_TO_SKIP_MS/1000 - curSec << "SEGUNDOS PARA OMITIR";
 				text->setText(ss.str());
 				text->setColor(0x777777FF);
 			}

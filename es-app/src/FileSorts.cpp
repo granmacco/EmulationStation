@@ -11,23 +11,23 @@ namespace FileSorts
 		FileData::SortType(&compareName, true, "nombre,↑"),
 		FileData::SortType(&compareName, false, "nombre,↓"),
 
-		FileData::SortType(&compareRating, true, "clasificacion,↑"),
-		FileData::SortType(&compareRating, false, "clasificacion,↓"),
+		FileData::SortType(&compareRating, true, "clasificación,↑"),
+		FileData::SortType(&compareRating, false, "clasificación,↓"),
 
 		FileData::SortType(&compareTimesPlayed, true, "veces jugados,↑"),
 		FileData::SortType(&compareTimesPlayed, false, "veces jugados,↓"),
 
-		FileData::SortType(&compareLastPlayed, true, "ultimos jugados,↑"),
-		FileData::SortType(&compareLastPlayed, false, "ultimos jugados,↓"),
+		FileData::SortType(&compareLastPlayed, true, "últimos jugados,↑"),
+		FileData::SortType(&compareLastPlayed, false, "últimos jugados,↓"),
 
-		FileData::SortType(&compareNumPlayers, true, "numero de jugadores,↑"),
-		FileData::SortType(&compareNumPlayers, false, "numero de jugadores,↓"),
+		FileData::SortType(&compareNumPlayers, true, "número de jugadores,↑"),
+		FileData::SortType(&compareNumPlayers, false, "número de jugadores,↓"),
 
 		FileData::SortType(&compareReleaseDate, true, "fecha de lanzamiento,↑"),
 		FileData::SortType(&compareReleaseDate, false, "fecha de lanzamiento,↓"),
 
-		FileData::SortType(&compareGenre, true, "genero,↑"),
-		FileData::SortType(&compareGenre, false, "genero,↓"),
+		FileData::SortType(&compareGenre, true, "género,↑"),
+		FileData::SortType(&compareGenre, false, "género,↓"),
 
 		FileData::SortType(&compareDeveloper, true, "desarrollador,↑"),
 		FileData::SortType(&compareDeveloper, false, "desarrollador,↓"),

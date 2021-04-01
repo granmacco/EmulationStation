@@ -166,31 +166,31 @@ bool parseArgs(int argc, char* argv[])
 			freopen("CONOUT$", "wb", stdout);
 #endif
 			std::cout <<
-				"EmulationStation, a graphical front-end for ROM browsing.\n"
-				"Written by Alec \"Aloshi\" Lofquist.\n"
-				"Version " << PROGRAM_VERSION_STRING << ", built " << PROGRAM_BUILT_STRING << "\n\n"
-				"Command line arguments:\n"
-				"--resolution [width] [height]  try and force a particular resolution\n"
-				"--screenrotate [n]             rotate a quarter turn clockwise for each n\n"
-				"--screensize [width] [height]  for a canvas smaller than the full resolution,\n"
-				"                               or if rotating into portrait mode\n"
-				"--screenoffset [x] [y]         move the canvas by x,y pixels\n"
-				"--gamelist-only                skip automatic game search, only read from gamelist.xml\n"
-				"--ignore-gamelist              ignore the gamelist (useful for troubleshooting)\n"
-				"--draw-framerate               display the framerate\n"
-				"--no-exit                      don't show the exit option in the menu\n"
-				"--no-splash                    don't show the splash screen\n"
-				"--debug                        more logging, show console on Windows\n"
-				"--scrape                       scrape using command line interface\n"
-				"--windowed                     not fullscreen, should be used with --resolution\n"
-				"--vsync [1/on or 0/off]        turn vsync on or off (default is on)\n"
-				"--max-vram [size]              max VRAM to use in MB before swapping. 0 for unlimited\n"
-				"--force-kid                    force the UI mode to be Kid\n"
-				"--force-kiosk                  force the UI mode to be Kiosk\n"
-				"--force-disable-filters        force the UI to ignore applied filters in gamelist\n"
-				"--home [path]                  directory to use as home path\n"
-				"--help, -h                     summon a sentient, angry tuba\n\n"
-				"More information available in README.md.\n";
+				"EmulationStation, un front-end gráfico para consultar ROMs.\n"
+				"Escrito por \"Aloshi\" Lofquist. Traducido al castellano por Jcarliman, Kactius y GranMacco\n"
+				"Versión " << PROGRAM_VERSION_STRING << ", construido " << PROGRAM_BUILT_STRING << "\n\n"
+				"Argumentos de línea de comandos:\n"
+				"--resolution [ancho] [alto]    intenta forzar una resolución en particular\n"
+				"--screenrotate [n]             rota 90º en sentido horario por cada n\n"
+				"--screensize [ancho] [alto]    para una imagen más pequeña que la resolución completa,\n"
+				"                               o para rotarlo y ponerlo en vertical\n"
+				"--screenoffset [x] [y]         mover la imagen unos x,y píxeles\n"
+				"--gamelist-only                omitir la búsqueda automática de juegos, leer únicamente del gamelist.xml\n"
+				"--ignore-gamelist              ignorar el gamelist (útil para solución de problemas)\n"
+				"--draw-framerate               mostrar el framerate\n"
+				"--no-exit                      no mostrar la opción de salida en el menú\n"
+				"--no-splash                    no mostrar la pantalla de inicio (splash)\n"
+				"--debug                        más logueo, muestra la consola en Windows\n"
+				"--scrape                       scrapea usando la línea de comandos\n"
+				"--windowed                     abrir en ventana, usar junto con --resolution\n"
+				"--vsync [1/on o 0/off]         encender o apagar la sincronía vertical (por defecto, on)\n"
+				"--max-vram [tamaño]            máxima memoria de vídeo en MB antes de hacer swap. 0 para ilimitada\n"
+				"--force-kid                    forzar la interfaz en modo Niño\n"
+				"--force-kiosk                  forzar la interfaz en modo Kiosco\n"
+				"--force-disable-filters        forzar la interfaz para que ignore los filtros aplicados en el gamelist\n"
+				"--home [path]                  directorio a usar como HOME\n"
+				"--help, -h                     invoca a una tuba consciente y enfadada\n\n"
+				"Más información disponible en el README.md.\n";
 			return false; //exit after printing help
 		}
 	}
@@ -225,7 +225,7 @@ bool loadSystemConfigFile(Window* window, const char** errorString)
 	if(!SystemData::loadConfig(window))
 	{
 		LOG(LogError) << "Error while parsing systems configuration file!";
-		*errorString = "PACECE SER QUE EL ARCHIVO DE CONFIGURACIÓN DE SISTEMAS NO FUE CONFIGURADO O ES INVÁLIDO. DESAFORTUNADAMENTE NECESITARÁ HACERLO DE NUEVO.\n\n"
+		*errorString = "PARECE SER QUE EL ARCHIVO DE CONFIGURACIÓN DE SISTEMAS NO FUE CONFIGURADO O ES INVÁLIDO. DESAFORTUNADAMENTE NECESITARÁ REHACERLO DE NUEVO A MANO.\n\n"
 			"VISITE EMULATIONSTATION.ORG PARA OBTENER MÁS INFORMACIÓN.";
 		return false;
 	}
@@ -327,7 +327,7 @@ int main(int argc, char* argv[])
 			return 1;
 		}
 
-		if (splashScreen)
+		if(splashScreen)
 		{
 			std::string progressText = "Cargando...";
 			if (splashScreenProgress)

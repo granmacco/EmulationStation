@@ -93,7 +93,7 @@ void BasicGameListView::setCursor(FileData* cursor)
 void BasicGameListView::addPlaceholder()
 {
 	// empty list - add a placeholder
-	FileData* placeholder = new FileData(PLACEHOLDER, "<No Entries Found>", this->mRoot->getSystem()->getSystemEnvData(), this->mRoot->getSystem());
+	FileData* placeholder = new FileData(PLACEHOLDER, "<No se encontraron datos>", this->mRoot->getSystem()->getSystemEnvData(), this->mRoot->getSystem());
 	mList.add(placeholder->getName(), placeholder, (placeholder->getType() == PLACEHOLDER));
 }
 
